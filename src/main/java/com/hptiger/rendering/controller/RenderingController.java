@@ -69,6 +69,8 @@ public class RenderingController {
   public static String getFileName(String fileURL) {
     if (fileURL.lastIndexOf("/") > -1) {
       return fileURL.substring(fileURL.lastIndexOf("/") + 1);
+    } else if (fileURL.lastIndexOf("\\") > -1) {
+      return fileURL.substring(fileURL.lastIndexOf("\\") + 1);
     } else {
       return fileURL;
     }
