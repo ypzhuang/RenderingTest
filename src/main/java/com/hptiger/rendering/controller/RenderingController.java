@@ -92,5 +92,26 @@ class OrignailFile {
   public void setFile(String file) {
     this.file = file;
   }
+
+  /**
+   * @return the outFormat
+   */
+  public String getOutFormat() {
+    return outFormat;
+  }
+
+  /**
+   * @param outFormat the outFormat to set
+   */
+  public void setOutFormat(String outFormat) {
+    this.outFormat = outFormat;
+  }
+
+  @Override
+  public String toString() {
+    return "OrignailFile [file=" + file + ", outFormat=" + outFormat + "]";
+  }
+  
+  
   
 }
