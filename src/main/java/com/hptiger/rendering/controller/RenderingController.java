@@ -16,6 +16,7 @@
  */
 package com.hptiger.rendering.controller;
 
+import java.io.File;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,7 +45,8 @@ public class RenderingController {
     
     GenericConvertor genericConv = new GenericConvertor(); 
     
-    genericConv.convert(file.getFile(),filename + ".pdf");    
+    String userHome =  System.getProperty("user.home");
+    genericConv.convert(file.getFile(),userHome + File.separator + filename + ".pdf");    
     
 //    
 //    WordToPdf wordToPdf = new WordToPdf(); 
