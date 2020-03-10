@@ -36,19 +36,7 @@ import com.zeonpad.pdfcovertor.WordToPdf;
 @RequestMapping("/api/v1/rendering")
 public class RenderingController {
 
-  class OrignailFile {
-    String file;
 
-  
-    public String getFile() {
-      return file;
-    }
-   
-    public void setFile(String file) {
-      this.file = file;
-    }
-    
-  }
   @PostMapping(value = "/pdf")
   public void generating(@RequestBody OrignailFile file) {
     PDFileValidation.validateInputFile(file.getFile());
@@ -76,4 +64,21 @@ public class RenderingController {
       return fileURL;
     }
   }
+}
+
+class OrignailFile {
+  String file;
+ 
+  public OrignailFile() {
+    super();
+  }
+
+  public String getFile() {
+    return file;
+  }
+ 
+  public void setFile(String file) {
+    this.file = file;
+  }
+  
 }
