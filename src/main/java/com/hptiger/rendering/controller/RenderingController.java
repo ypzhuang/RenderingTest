@@ -27,6 +27,7 @@ import com.zeonpad.pdfcovertor.GenericConvertor;
 import com.zeonpad.pdfcovertor.PDFileValidation;
 import com.zeonpad.pdfcovertor.PdfExportOptimizeFor;
 import com.zeonpad.pdfcovertor.WordToPdf;
+import com.zeonpad.wordcovertor.PdfToWord;
 
 /**
  * @author ypzhuang  2020-03-10
@@ -49,10 +50,16 @@ public class RenderingController {
     String output = userHome + File.separator + filename + "." + file.outFormat;
     System.out.println(output);
     try {
-      genericConv.convert(file.getFile(),output);
-    } catch(Exception e) {
+      if ("docx".equals(file.outFormat)) {
+        PdfToWord pdfToWord = new PdfToWord();
+        pdfToWord.convert(file.getFile(), output);
+      } else {
+        genericConv.convert(file.getFile(), output);
+      }
+    } catch (Exception e) {
       e.printStackTrace();
     }
+    
     
 
 //    
