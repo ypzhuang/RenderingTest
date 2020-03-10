@@ -48,7 +48,12 @@ public class RenderingController {
     String userHome =  System.getProperty("user.home");
     String output = userHome + File.separator + filename + ".pdf";
     System.out.println(output);
-    genericConv.convert(file.getFile(),output);
+    try {
+      genericConv.convert(file.getFile(),output);
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+    
 
 //    
 //    WordToPdf wordToPdf = new WordToPdf(); 
@@ -56,9 +61,9 @@ public class RenderingController {
     
    
   }
-  
+ 
   public static String getFileNameWithouttExtension(String fileName) {
-    return fileName.substring(fileName.lastIndexOf(".") + 1);    
+    return fileName.substring(0,fileName.lastIndexOf("."));    
   }
   
   public static String getFileName(String fileURL) {
