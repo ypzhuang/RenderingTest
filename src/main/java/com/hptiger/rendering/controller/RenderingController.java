@@ -46,7 +46,7 @@ public class RenderingController {
     GenericConvertor genericConv = new GenericConvertor(); 
     
     String userHome =  System.getProperty("user.home");
-    String output = userHome + File.separator + filename + ".pdf";
+    String output = userHome + File.separator + filename + "." + file.outFormat;
     System.out.println(output);
     try {
       genericConv.convert(file.getFile(),output);
@@ -79,6 +79,7 @@ public class RenderingController {
 
 class OrignailFile {
   String file;
+  String outFormat;
  
   public OrignailFile() {
     super();
