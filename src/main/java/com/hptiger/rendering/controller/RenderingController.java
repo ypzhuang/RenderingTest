@@ -46,8 +46,10 @@ public class RenderingController {
     GenericConvertor genericConv = new GenericConvertor(); 
     
     String userHome =  System.getProperty("user.home");
-    genericConv.convert(file.getFile(),userHome + File.separator + filename + ".pdf");    
-    
+    String output = userHome + File.separator + filename + ".pdf";
+    System.out.println(output);
+    genericConv.convert(file.getFile(),output);
+
 //    
 //    WordToPdf wordToPdf = new WordToPdf(); 
 //    wordToPdf.setPdfExportOptimizeFor(PdfExportOptimizeFor.PDF_EXPORT_OPTIMIZE_FORPRINT);
