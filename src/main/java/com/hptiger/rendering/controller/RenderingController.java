@@ -17,6 +17,7 @@
 package com.hptiger.rendering.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,27 +36,27 @@ import com.zeonpad.pdfcovertor.WordToPdf;
 @RequestMapping("/api/v1/rendering")
 public class RenderingController {
 
-//  class OrignailFile {
-//    String file;
-//
-//  
-//    public String getFile() {
-//      return file;
-//    }
-//   
-//    public void setFile(String file) {
-//      this.file = file;
-//    }
-//    
-//  }
-  @GetMapping(value = "/pdf")
-  public void generating(@RequestParam String file) {
-    PDFileValidation.validateInputFile(file);
-    String filename = getFileNameWithouttExtension(getFileName(file));
+  class OrignailFile {
+    String file;
+
+  
+    public String getFile() {
+      return file;
+    }
+   
+    public void setFile(String file) {
+      this.file = file;
+    }
+    
+  }
+  @PostMapping(value = "/pdf")
+  public void generating(@RequestBody OrignailFile file) {
+    PDFileValidation.validateInputFile(file.getFile());
+    String filename = getFileNameWithouttExtension(getFileName(file.getFile()));
     
     GenericConvertor genericConv = new GenericConvertor(); 
     
-    genericConv.convert(file,filename + ".pdf");    
+    genericConv.convert(file.getFile(),filename + ".pdf");    
     
 //    
 //    WordToPdf wordToPdf = new WordToPdf(); 
