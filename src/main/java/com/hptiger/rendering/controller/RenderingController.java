@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.zeonpad.pdfcovertor.GenericConvertor;
 import com.zeonpad.pdfcovertor.PDFileValidation;
+import com.zeonpad.pdfcovertor.PdfExportOptimizeFor;
+import com.zeonpad.pdfcovertor.WordToPdf;
 
 /**
  * @author ypzhuang  2020-03-10
@@ -48,11 +50,17 @@ public class RenderingController {
 //  }
   @GetMapping(value = "/pdf")
   public void generating(@RequestParam String file) {
-    PDFileValidation.validateFile(file);
+    PDFileValidation.validateInputFile(file);
     String filename = getFileNameWithouttExtension(getFileName(file));
     
     GenericConvertor genericConv = new GenericConvertor(); 
+    
     genericConv.convert(file,filename + ".pdf");    
+    
+//    
+//    WordToPdf wordToPdf = new WordToPdf(); 
+//    wordToPdf.setPdfExportOptimizeFor(PdfExportOptimizeFor.PDF_EXPORT_OPTIMIZE_FORPRINT);
+    
    
   }
   
